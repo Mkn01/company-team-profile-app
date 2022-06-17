@@ -20,6 +20,7 @@
   "homepage": "https://github.com/Mkn01/company-team-profile-app#readme",
   "dependencies": {
     "@types/jest": "^28.1.2",
-    "inquirer": "^8.2.4"
+    "inquirer": "^8.2.4",
+    "jest": "^28.1.1"
   }
 }
