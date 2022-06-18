@@ -2,6 +2,7 @@ const inquirer = require("inquirer");
 const { getEmployeeInfo } = require(".");
 
 describe("employeeQuestions", () => {
+  // test blocks for each question in employee cases
   test("should return the expected name", async () => {
     const spy = jest.spyOn(inquirer, "prompt").mockResolvedValue({
       employeeFullName: "John Smith ",
