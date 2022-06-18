@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node src",
+    "start": "src/lib/Employee.js",
     "test": "jest",
     "test:watch": "jest --watch --silent --verbose"
   },
