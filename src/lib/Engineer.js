@@ -6,12 +6,12 @@ const getEngineerInfo = async () => {
     {
       type: "input",
       message: "Please enter Engineers id",
-      name: "engineerId",
+      name: "id",
     },
     {
       type: "input",
       message: "Please enter Git hub profile url",
-      name: "gitHubUrl",
+      name: "additionalInfo",
     },
   ];
   //prompt questions display answers

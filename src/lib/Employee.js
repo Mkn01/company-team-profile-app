@@ -5,14 +5,19 @@ const getEmployeeInfo = async () => {
   const questions = [
     {
       type: "input",
+      message: "Please enter Team name",
+      name: "teamName",
+    },
+    {
+      type: "input",
       message: "Please enter Employees full name",
-      name: "employeeName",
+      name: "name",
     },
 
     {
       type: "input",
       message: "Please enter Employees email address",
-      name: "employeeEmail",
+      name: "email",
     },
     {
       type: "list",

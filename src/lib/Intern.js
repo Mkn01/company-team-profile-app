@@ -5,36 +5,22 @@ const getInternInfo = async () => {
   const questions = [
     {
       type: "input",
-      message: "Please enter Interns full name",
-      name: "InternName",
-    },
-
-    {
-      type: "input",
       message: "Please enter Interns id",
-      name: "internId",
+      name: "id",
     },
+
     {
       type: "input",
-      message: "Please enter Interns email",
-      name: "internEmail",
+      message: "Please enter the school",
+      name: "additionalInfo",
     },
-    {
-        type: "input",
-        message: "Please enter the school",
-        name: "school",
-      },
-    
   ];
-};
 
-const init async () => {
-  //prompt questions save answers
-  console.log("questions")
+  //prompt questions display answers
+
   const answers = await inquirer.prompt(questions);
-}
-
-init()
+  console.log(answers);
+};
 
 module.exports = {
   getInternInfo,

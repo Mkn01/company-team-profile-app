@@ -5,35 +5,19 @@ const getManagerInfo = async () => {
   const questions = [
     {
       type: "input",
-      message: "Please enter Managers full name",
-      name: "ManagersName",
-    },
-
-    {
-      type: "input",
       message: "Please enter Managers id",
-      name: "managersId",
-    },
-    {
-      type: "input",
-      message: "Please enter Managers email",
-      name: "managersEmail",
+      name: "id",
     },
     {
       type: "input",
       message: "Please enter office number of manager",
-      name: "officeNumber",
+      name: "additionalInfo",
     },
   ];
-};
-
-const init = async () => {
-  //prompt questions save answers
-  console.log("questions");
+  // prompt questions display answers
   const answers = await inquirer.prompt(questions);
+  console.log(answers);
 };
-
-init();
 
 module.exports = {
   getManagerInfo,
