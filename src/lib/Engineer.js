@@ -1,6 +1,7 @@
 const inquirer = require("inquirer");
 
 const getEngineerInfo = async () => {
+  console.log("gto");
   //prompt questions
   const questions = [
     {

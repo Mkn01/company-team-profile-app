@@ -1,4 +1,7 @@
 const inquirer = require("inquirer");
+const { getEngineerInfo } = require("./Engineer.js");
+const { getInternInfo } = require("./Intern");
+const { getManagerInfo } = require("./Manager");
 
 const getEmployeeInfo = async () => {
   //prompt questions
@@ -29,6 +32,10 @@ const getEmployeeInfo = async () => {
 
   const answers = await inquirer.prompt(questions);
   console.log(answers);
+  const index = answers
+    .map((object) => object.employeeRole)
+    .indexof("Engineer");
+  console.log(index);
 };
 
 module.exports = {
