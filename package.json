@@ -4,9 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "src/lib/Employee.js",
+    "start": "node src/index.js",
     "test": "jest",
-    "test:watch": "jest --watch --silent --verbose"
+    "test:watch": "jest --watch --verbose",
+    "test:coverage": "jest --coverage"
   },
   "repository": {
     "type": "git",

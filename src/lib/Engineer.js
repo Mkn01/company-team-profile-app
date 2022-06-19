@@ -5,34 +5,19 @@ const getEngineerInfo = async () => {
   const questions = [
     {
       type: "input",
-      message: "Please enter Engineers full name",
-      name: "engineersName",
-    },
-
-    {
-      type: "input",
       message: "Please enter Engineers id",
       name: "engineerId",
     },
     {
       type: "input",
-      message: "Please enter Engineers email",
-      name: "engineer email",
+      message: "Please enter Git hub profile url",
+      name: "gitHubUrl",
     },
-    {
-        type: "input",
-        message: "Please enter Git hub profile url",
-        name: "gitHubUrl",
-      },
-    
   ];
-};
-
-const init async () => {
-  //prompt questions save answers
-  console.log("questions")
+  //prompt questions display answers
   const answers = await inquirer.prompt(questions);
-}
+  console.log(answers);
+};
 
 module.exports = {
   getEngineerInfo,
