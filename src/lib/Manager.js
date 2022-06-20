@@ -1,23 +1,33 @@
 const inquirer = require("inquirer");
 
-const getManagerInfo = async () => {
-  //prompt questions
-  const questions = [
-    {
-      type: "input",
-      message: "Please enter Managers id",
-      name: "id",
-    },
-    {
-      type: "input",
-      message: "Please enter office number of manager",
-      name: "additionalInfo",
-    },
-  ];
-  // prompt questions display answers
-  const answers = await inquirer.prompt(questions);
-  console.log(answers);
-};
+const getManagerInfo = [
+  {
+    type: "input",
+    message: "Please enter Managers id",
+    name: "id",
+  },
+  {
+    type: "input",
+    message: "Please enter office number of manager",
+    name: "additionalInfo",
+  },
+  {
+    type: "input",
+    message: "Please enter Employees full name",
+    name: "name",
+  },
+
+  {
+    type: "input",
+    message: "Please enter Employees email address",
+    name: "email",
+  },
+  {
+    type: "confirm",
+    name: "addAnotherManager",
+    message: "would you like to add another manager to this team",
+  },
+];
 
 module.exports = {
   getManagerInfo,
