@@ -3,7 +3,6 @@ const inquirer = require("inquirer");
 class Employee {
   constructor({ employeeRole }) {
     this.employeeRole = employeeRole;
-    this.status = "PENDING";
   }
 }
 

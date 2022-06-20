@@ -1,106 +1,64 @@
 const fs = require("fs");
 const inquirer = require("inquirer");
+const { generateHtml } = require("./lib/generator.js");
 const { addAnotherCard } = require("./lib/Employee.js");
 const { typeOFEmployeeQuestions } = require("./lib/Employee.js");
 const { getEngineerInfo } = require("./lib/Engineer.js");
 const { getInternInfo } = require("./lib/Intern.js");
 const { getManagerInfo } = require("./lib/Manager.js");
 
+const { Engineer } = require("./lib/Engineer");
+const { Intern } = require("./lib/Intern");
+const { Manager } = require("./lib/Manager.js");
 
 const init = async () => {
   let employeeCardCreationInProgress = true;
   const employeeCards = [];
 
-
   while (employeeCardCreationInProgress) {
-//get the type of employee to add
-const { employeeRole } = await inquirer.prompt(typeOFEmployeeQuestions);
+    //get the type of employee to add
+    const { employeeRole } = await inquirer.prompt(typeOFEmployeeQuestions);
 
+    //if engineer
+    if (employeeRole === "Engineer") {
+      //prompt engineer qs and gets answers
+      const engineerAnswers = await inquirer.prompt(getEngineerInfo);
 
-  //if engineer
-  if (employeeRole === "Engineer") {
-    //prompt engineer qs and gets answers
-    const engineerAnswers = await inquirer.prompt(getEngineerInfo);
-   
-    const engineer = new Engineer(engineerAnswers);
+      const engineer = new Engineer(engineerAnswers);
 
-    employeeCards.push(engineer)
+      employeeCards.push(engineer);
+    }
 
+    //if intern
+    if (employeeRole === "Intern") {
+      //prompt engineer qs and gets answers
+      const internAnswers = await inquirer.prompt(getInternInfo);
+      const intern = new Intern(internAnswers);
 
+      employeeCards.push(intern);
+    }
+
+    //if manager
+    if (employeeRole === "Manager") {
+      //prompt engineer qs and gets answers
+      const managerAnswers = await inquirer.prompt(getManagerInfo);
+      const manager = new Manager(managerAnswers);
+
+      employeeCards.push(manager);
+    }
+
+    // prompt question to add another employee
+    const { addNextEmployee } = await inquirer.prompt(addAnotherCard);
+
+    if (!addNextEmployee) {
+      employeeCardCreationInProgress = false;
+      // generate html
+      const html = generateHtml(employeeCards);
+      // write html to file
+      fs.writeFileSync("Generated_HTML.html", html);
+    } else {
+      init();
+    }
   }
-
-  //if intern
-  if (employeeRole === "Intern") {
-    //prompt engineer qs and gets answers
-    const internAnswers = await inquirer.prompt(getInternInfo);
-    console.log(internAnswers);
-  }
-
-  //if manager
-  if (employeeRole === "Manager") {
-    //prompt engineer qs and gets answers
-    const managerAnswers = await inquirer.prompt(getManagerInfo);
-    console.log(managerAnswers);
-  }
-  // let addAnotherManagerInProgress = true;
-  // //start loop for adding another manager
-  // while (addAnotherManagerInProgress) {
-  //   //prompt question to add another employee
-  //   const addAnotherManagerAnswer = await inquirer.prompt(addAnotherManager);
-
-  //   console.log(addAnotherEmployeeAnswer);
-
-  //   if (addAnotherManager === "true") {
-  //     addAnotherManagerInProgress = false;
-  //   }
-
-  //   // function to generate user input answers to create html
-  // const generateInputToHtml (managerAnswers,internAnswers,engineerAnswers,employeeRole) {
-  //   return `<!DOCTYPE html>
-  //       <html lang="en">
-  //         <head>
-  //           <meta charset="UTF-8" />
-  //           <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  //           <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  //           <link rel="stylesheet" href="dist\assets\css\styles.css" />
-  //           <title>Team Profile</title>
-  //         </head>
-  //         <body>
-  //           <h1 class="teamName">${answers.teamName}</h1>
-
-  //           <div class="card">
-  //             <h2 class="employeeName">${answers.name}</h2>
-  //             <h3 class="role">${returnQsDependingOnRole(
-  //               answers.employeeRole
-  //             )}</h3>
-  //             <img src="dist\assets\img\icon.png" alt="avatar icon" class="img" />
-  //             <div class="container">
-  //               <h3 class="employeeInfo">${answers.email}</h3>
-  //               <h3 class="employeeInfo">${answers.id}</h3>
-  //               <h3 class="employeeInfo">${answers.additionalInfo}</h3>
-  //             </div>
-  //           </div>`;
-  // }
-  addAnotherEmployee();
 };
-
 init();
-
-// //generateInputToHtml();
-// //const confirmCard = (generateInputToHtml) => {
-
-// //
-// //])
-// // .then((answer) => {
-// //  console.log(answer);
-// //});
-
-// //if (addAnotherCard) {
-// //  getCard();
-// //} else {
-// //generate user input to cards on html
-// const html = generateInputToHtml(answers);
-// //write generated html to file
-// Fs.writeFileSync("Generated_index.html", html);
-// //}
-// //};
