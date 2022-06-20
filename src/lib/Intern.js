@@ -1,4 +1,14 @@
 const inquirer = require("inquirer");
+const Employee = require("./Employee");
+
+class Intern extends Employee {
+  constructor({ id, additionalInfo, name, email, EmployeeRole }) {
+    super({ name, email, EmployeeRole });
+
+    this.id = id;
+    this.additionalInfo = additionalInfo;
+  }
+}
 
 const getInternInfo = [
   {
@@ -23,13 +33,9 @@ const getInternInfo = [
     message: "Please enter Employees email address",
     name: "email",
   },
-  {
-    type: "confirm",
-    name: "addAnotherIntern",
-    message: "would you like to add another intern to this team",
-  },
 ];
 
 module.exports = {
   getInternInfo,
+  Intern,
 };

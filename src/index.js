@@ -6,15 +6,27 @@ const { getEngineerInfo } = require("./lib/Engineer.js");
 const { getInternInfo } = require("./lib/Intern.js");
 const { getManagerInfo } = require("./lib/Manager.js");
 
+
 const init = async () => {
-  //get the type of employee
-  const { employeeRole } = await inquirer.prompt(typeOFEmployeeQuestions);
+  let employeeCardCreationInProgress = true;
+  const employeeCards = [];
+
+
+  while (employeeCardCreationInProgress) {
+//get the type of employee to add
+const { employeeRole } = await inquirer.prompt(typeOFEmployeeQuestions);
+
 
   //if engineer
   if (employeeRole === "Engineer") {
     //prompt engineer qs and gets answers
     const engineerAnswers = await inquirer.prompt(getEngineerInfo);
-    console.log(engineerAnswers);
+   
+    const engineer = new Engineer(engineerAnswers);
+
+    employeeCards.push(engineer)
+
+
   }
 
   //if intern
@@ -29,19 +41,18 @@ const init = async () => {
     //prompt engineer qs and gets answers
     const managerAnswers = await inquirer.prompt(getManagerInfo);
     console.log(managerAnswers);
-    let addAnotherManagerInProgress = true;
-    //start loop for adding another manager
-    while (addAnotherManagerInProgress) {
-      //prompt question to add another employee
-      const addAnotherManagerAnswer = await inquirer.prompt(addAnotherManager);
-
-      console.log(addAnotherEmployeeAnswer);
-
-      if (addAnotherManager === "true") {
-        addAnotherManagerInProgress = false;
-      }
-    }
   }
+  // let addAnotherManagerInProgress = true;
+  // //start loop for adding another manager
+  // while (addAnotherManagerInProgress) {
+  //   //prompt question to add another employee
+  //   const addAnotherManagerAnswer = await inquirer.prompt(addAnotherManager);
+
+  //   console.log(addAnotherEmployeeAnswer);
+
+  //   if (addAnotherManager === "true") {
+  //     addAnotherManagerInProgress = false;
+  //   }
 
   //   // function to generate user input answers to create html
   // const generateInputToHtml (managerAnswers,internAnswers,engineerAnswers,employeeRole) {
@@ -70,7 +81,9 @@ const init = async () => {
   //             </div>
   //           </div>`;
   // }
+  addAnotherEmployee();
 };
+
 init();
 
 // //generateInputToHtml();

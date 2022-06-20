@@ -1,5 +1,12 @@
 const inquirer = require("inquirer");
 
+class Employee {
+  constructor({ employeeRole }) {
+    this.employeeRole = employeeRole;
+    this.status = "PENDING";
+  }
+}
+
 const typeOFEmployeeQuestions = {
   type: "list",
   message: "Please select Employees role",
@@ -22,4 +29,5 @@ const addAnotherCard = {
 module.exports = {
   typeOFEmployeeQuestions,
   addAnotherCard,
+  Employee,
 };
