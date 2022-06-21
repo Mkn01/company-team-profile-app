@@ -6,7 +6,7 @@ const { typeOFEmployeeQuestions } = require("./lib/Employee.js");
 const { getEngineerInfo } = require("./lib/Engineer.js");
 const { getInternInfo } = require("./lib/Intern.js");
 const { getManagerInfo } = require("./lib/Manager.js");
-const { addTeamName } = require("./lib/Employee.js");
+const { teamName } = require("./lib/Employee.js");
 
 const { Engineer } = require("./lib/Engineer");
 const { Intern } = require("./lib/Intern");
@@ -52,6 +52,8 @@ const init = async () => {
     const { addNextEmployee } = await inquirer.prompt(addAnotherCard);
 
     if (!addNextEmployee) {
+      const addTeamName = await inquirer.prompt(teamName);
+      console.log(addTeamName);
       employeeCardCreationInProgress = false;
       // generate html
       const html = generateHtml(employeeCards);

@@ -1,16 +1,15 @@
 const inquirer = require("inquirer");
 
 class Employee {
-  constructor({ employeeRole }) {
+  constructor({ employeeRole, teamName }) {
     this.employeeRole = employeeRole;
+    this.teamName = teamName;
+  }
+  createCard() {
+    return `<h1 class="${this.teamName}">Team Name</h1>`;
   }
 }
 
-const addTeamName = {
-  type: "input",
-  message: "Please enter Name of team",
-  name: "teamName",
-};
 const typeOFEmployeeQuestions = {
   type: "list",
   message: "Please select Employees role",
@@ -19,14 +18,13 @@ const typeOFEmployeeQuestions = {
     { name: "Engineer", value: "Engineer", short: "Engineer" },
     { name: "Intern", value: "Intern", short: "Intern" },
     { name: "Manager", value: "Manager", short: "Manager" },
-  ],},
-  
-  {
-      type: "input",
-      message: "Please enter Name of team",
-      name: "teamName",
-    };
-  }
+  ],
+};
+
+const teamName = {
+  type: "input",
+  name: "teamName",
+  message: "Please enter Name of team",
 };
 
 const addAnotherCard = {
@@ -39,5 +37,5 @@ module.exports = {
   typeOFEmployeeQuestions,
   addAnotherCard,
   Employee,
-  addTeamName,
+  teamName,
 };

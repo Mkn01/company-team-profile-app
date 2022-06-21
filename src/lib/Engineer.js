@@ -16,8 +16,15 @@ class Engineer {
     <img src="dist/assets/img/icon.png" alt="avatar icon" class="img" />
     <div class="container">
       <h3 class="employeeInfo">${this.id}</h3>
-      <h3 class="employeeInfo">${this.email}</h3>
-      <h3 class="employeeInfo">Visit GitHub profile[here](${this.additionalInfo})</h3>
+      <button class="SendEmail">Send Email</button>${this.emailEmail}
+      
+        <a href="${this.additionalInfo}">
+          <img
+            src="dist/assets/img/GitHub-Mark-32px.png"
+            alt="gitHub icon"
+            class="employeeInfoIcon"
+          />
+        </a>
     </div>
   </div>`;
   }
