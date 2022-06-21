@@ -17,7 +17,7 @@ class Engineer {
     <div class="container">
       <h3 class="employeeInfo">${this.id}</h3>
       <h3 class="employeeInfo">${this.email}</h3>
-      <h3 class="employeeInfo">${this.additionalInfo}</h3>
+      <h3 class="employeeInfo">Visit GitHub profile[here](${this.additionalInfo})</h3>
     </div>
   </div>`;
   }

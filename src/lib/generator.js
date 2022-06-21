@@ -12,9 +12,6 @@ const generateHtml = (employeeCards) => {
       <title>Team Profile</title>
     </head>
     <body>
-      <h1 class="teamName">Team Name</h1>
-  
-      <div class="card">
         ${generateEmployeeCards(employeeCards)}
       </div>
       <script src="./src/index.js"></script>

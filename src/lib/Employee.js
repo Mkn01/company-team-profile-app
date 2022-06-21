@@ -6,6 +6,11 @@ class Employee {
   }
 }
 
+const addTeamName = {
+  type: "input",
+  message: "Please enter Name of team",
+  name: "teamName",
+};
 const typeOFEmployeeQuestions = {
   type: "list",
   message: "Please select Employees role",
@@ -14,9 +19,14 @@ const typeOFEmployeeQuestions = {
     { name: "Engineer", value: "Engineer", short: "Engineer" },
     { name: "Intern", value: "Intern", short: "Intern" },
     { name: "Manager", value: "Manager", short: "Manager" },
-  ],
-
-  //validate () => {}
+  ],},
+  
+  {
+      type: "input",
+      message: "Please enter Name of team",
+      name: "teamName",
+    };
+  }
 };
 
 const addAnotherCard = {
@@ -29,4 +39,5 @@ module.exports = {
   typeOFEmployeeQuestions,
   addAnotherCard,
   Employee,
+  addTeamName,
 };

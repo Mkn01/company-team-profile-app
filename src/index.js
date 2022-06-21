@@ -6,6 +6,7 @@ const { typeOFEmployeeQuestions } = require("./lib/Employee.js");
 const { getEngineerInfo } = require("./lib/Engineer.js");
 const { getInternInfo } = require("./lib/Intern.js");
 const { getManagerInfo } = require("./lib/Manager.js");
+const { addTeamName } = require("./lib/Employee.js");
 
 const { Engineer } = require("./lib/Engineer");
 const { Intern } = require("./lib/Intern");
@@ -56,8 +57,7 @@ const init = async () => {
       const html = generateHtml(employeeCards);
       // write html to file
       fs.writeFileSync("Generated_HTML.html", html);
-    } else {
-      init();
+      return;
     }
   }
 };
