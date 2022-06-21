@@ -16,7 +16,9 @@ class Engineer {
     <img src="dist/assets/img/icon.png" alt="avatar icon" class="img" />
     <div class="container">
       <h3 class="employeeInfo">${this.id}</h3>
-      <button class="SendEmail">Send Email</button>${this.emailEmail}
+      <button class="SendEmail">
+          <a href="mailto:${this.email}">Send Email</a>
+        </button>
       
         <a href="${this.additionalInfo}">
           <img

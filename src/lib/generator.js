@@ -1,7 +1,6 @@
 const generateEmployeeCards = (employeeCards) =>
   employeeCards.map((employee) => employee.createCard()).join("");
-
-const generateHtml = (employeeCards) => {
+const generateHtml = (employeeCards, teamName) => {
   return `<!DOCTYPE html>
   <html lang="en">
     <head>
@@ -12,6 +11,8 @@ const generateHtml = (employeeCards) => {
       <title>Team Profile</title>
     </head>
     <body>
+      <div>
+        <h1 class="teamName">${this.teamName}</h1>
         ${generateEmployeeCards(employeeCards)}
       </div>
       <script src="./src/index.js"></script>

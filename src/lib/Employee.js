@@ -6,7 +6,7 @@ class Employee {
     this.teamName = teamName;
   }
   createCard() {
-    return `<h1 class="${this.teamName}">Team Name</h1>`;
+    return `<h1 class="teamName">${this.teamName}</h1>`;
   }
 }
 

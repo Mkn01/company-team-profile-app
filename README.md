@@ -23,15 +23,17 @@ In your terminal clone the repository
 git clone git@github.com:Mkn01/company-team-profile-app.git
 ```
 
-Go into the repository and install the required packages:
+Go into the command line and execute the following commands:
 
 ```
-npm install inquire
+cd company-team-profile-app
+npm i
+
 ```
 
 ## Usage
 
-In the integrated terminal the following command should be entered in the command line:
+In the integrated terminal the following command should be entered in the command line to start the application:
 
 ```
 npm run start
@@ -43,7 +45,7 @@ MIT License
 
 ## Video demo
 
-View a Demo of the application [here](https://drive.google.com/file/d/1XXO0Utj9kZU5f7W6dOuw66GTPpbxDnve/view)
+View a Demo of the application [here](https://drive.google.com/file/d/1AoM2bt5BxP89XPgT1wqZGW_MG9_qDTod/view)
 
 ## Developer Information
 

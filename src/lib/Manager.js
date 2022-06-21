@@ -15,8 +15,11 @@ class Manager {
     <img src="dist/assets/img/icon.png" alt="avatar icon" class="img" />
     <div class="container">
       <h3 class="employeeInfo">${this.id}</h3>
-      <h3 class="employeeInfo">${this.email}</h3>
-      <h3 class="employeeInfo">${this.additionalInfo}</h3>
+      <button class="SendEmail">
+          <a href="mailto:${this.email}">Send Email</a>
+        </button>
+      
+      <h3 class="employeeInfo">Office Number:${this.additionalInfo}</h3>
     </div>
   </div>`;
   }

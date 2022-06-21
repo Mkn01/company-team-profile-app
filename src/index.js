@@ -12,55 +12,64 @@ const { Engineer } = require("./lib/Engineer");
 const { Intern } = require("./lib/Intern");
 const { Manager } = require("./lib/Manager.js");
 
-const init = async () => {
-  let employeeCardCreationInProgress = true;
-  const employeeCards = [];
+const employeeCards = [];
 
-  while (employeeCardCreationInProgress) {
-    //get the type of employee to add
-    const { employeeRole } = await inquirer.prompt(typeOFEmployeeQuestions);
+const addEmployees = async () => {
+  //get the type of employee to add
+  const { employeeRole } = await inquirer.prompt(typeOFEmployeeQuestions);
 
-    //if engineer
-    if (employeeRole === "Engineer") {
-      //prompt engineer qs and gets answers
-      const engineerAnswers = await inquirer.prompt(getEngineerInfo);
+  //if engineer
+  if (employeeRole === "Engineer") {
+    //prompt engineer qs and gets answers
+    const engineerAnswers = await inquirer.prompt(getEngineerInfo);
 
-      const engineer = new Engineer(engineerAnswers);
+    const engineer = new Engineer(engineerAnswers);
 
-      employeeCards.push(engineer);
-    }
+    employeeCards.push(engineer);
+  }
 
-    //if intern
-    if (employeeRole === "Intern") {
-      //prompt engineer qs and gets answers
-      const internAnswers = await inquirer.prompt(getInternInfo);
-      const intern = new Intern(internAnswers);
+  //if intern
+  if (employeeRole === "Intern") {
+    //prompt engineer qs and gets answers
+    const internAnswers = await inquirer.prompt(getInternInfo);
+    const intern = new Intern(internAnswers);
 
-      employeeCards.push(intern);
-    }
+    employeeCards.push(intern);
+  }
 
-    //if manager
-    if (employeeRole === "Manager") {
-      //prompt engineer qs and gets answers
-      const managerAnswers = await inquirer.prompt(getManagerInfo);
-      const manager = new Manager(managerAnswers);
+  //if manager
+  if (employeeRole === "Manager") {
+    //prompt engineer qs and gets answers
+    const managerAnswers = await inquirer.prompt(getManagerInfo);
+    const manager = new Manager(managerAnswers);
 
-      employeeCards.push(manager);
-    }
-
-    // prompt question to add another employee
-    const { addNextEmployee } = await inquirer.prompt(addAnotherCard);
-
-    if (!addNextEmployee) {
-      const addTeamName = await inquirer.prompt(teamName);
-      console.log(addTeamName);
-      employeeCardCreationInProgress = false;
-      // generate html
-      const html = generateHtml(employeeCards);
-      // write html to file
-      fs.writeFileSync("Generated_HTML.html", html);
-      return;
-    }
+    employeeCards.push(manager);
   }
 };
+const init = async () => {
+  let employeeCardCreationInProgress = true;
+
+  await addEmployees();
+
+  while (employeeCardCreationInProgress === true) {
+    // prompt question to add another employee
+    const answers = await inquirer.prompt(addAnotherCard);
+    console.log(answers.addAnotherEmployee);
+    if (!answers.addAnotherEmployee) {
+      employeeCardCreationInProgress = false;
+    } else {
+      await addEmployees();
+    }
+  }
+
+  const addTeamName = await inquirer.prompt(teamName);
+  console.log(addTeamName);
+
+  // generate html
+  const html = generateHtml(employeeCards, teamName);
+  // write html to file
+  fs.writeFileSync("Generated_HTML.html", html);
+  return;
+};
+
 init();
